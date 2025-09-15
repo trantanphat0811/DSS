@@ -1,4 +1,4 @@
-# 📌 README – Thực hành với Dataiku và dataset `orders.csv`
+#  README – Thực hành với Dataiku và dataset `orders.csv`
 
 ## 1. Giới thiệu
 Trong bài tập này, chúng ta sẽ thực hành với **Dataiku DSS** để:
