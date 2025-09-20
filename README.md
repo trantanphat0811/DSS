@@ -1,4 +1,3 @@
-"""# Tổng kết kiến thức mới học được trong LAB1
 
 Trong quá trình thực hiện bài tập với dataset `orders.csv`, chúng ta đã học và áp dụng được các kiến thức sau:
 
@@ -44,10 +43,4 @@ Trong quá trình thực hiện bài tập với dataset `orders.csv`, chúng ta
 ---
 
 Với các bước trên, bạn đã nắm được **quy trình làm sạch và chuẩn bị dữ liệu cơ bản** trong DSS.
-"""
 
-# Xuất ra file README.md
-output_path = Path("/mnt/data/README.md")
-output_path.write_text(readme_content, encoding="utf-8")
-
-output_path
