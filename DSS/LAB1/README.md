@@ -1,4 +1,4 @@
-#  README – Thực hành với Dataiku và dataset `orders.csv`
+# Thực hành với Dataiku và dataset `orders.csv`
 
 ## 1. Giới thiệu
 Trong bài tập này, chúng ta sẽ thực hành với **Dataiku DSS** để:
@@ -89,4 +89,4 @@ Trong bài tập này, chúng ta sẽ thực hành với **Dataiku DSS** để:
 - File `orders.csv` phải được lưu trữ sẵn trên máy trước khi upload.  
 - Nếu file có nhiều dữ liệu, nên kiểm tra hiệu năng khi hiển thị trong Dataiku.  
 - Có thể xuất lại dataset sau xử lý thành file CSV mới bằng chức năng **Export**.  
-"""
+
