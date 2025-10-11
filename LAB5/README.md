@@ -1,4 +1,4 @@
-#   LAB 5: Xử lý dữ liệu sinh viên và Hồi quy tuyến tính
+#  README — LAB 5: Xử lý dữ liệu sinh viên và Hồi quy tuyến tính
 
 ##  BÀI 1: Xử lý dữ liệu thiếu bằng mean()
 ```python
@@ -6,7 +6,7 @@ df["Diem Toan"] = df["Diem Toan"].fillna(df["Diem Toan"].mean())
 df["Diem Van"] = df["Diem Van"].fillna(df["Diem Van"].mean())
 df["Diem Anh"] = df["Diem Anh"].fillna(df["Diem Anh"].mean())
 ```
-👉 Thay giá trị thiếu bằng giá trị trung bình cột tương ứng. Tránh dùng `inplace=True` để không báo lỗi pandas 3.0.
+ Thay giá trị thiếu bằng giá trị trung bình cột tương ứng. Tránh dùng `inplace=True` để không báo lỗi pandas 3.0.
 
 ---
 
@@ -52,13 +52,13 @@ mse = mean_squared_error(y_test, y_pred)
 
 print("Hệ số hồi quy:", model.coef_)
 print("Sai số trung bình bình phương (MSE):", mse)
-
+```
 
 ---
 
 ##  HƯỚNG DẪN SỬ DỤNG NANO TRÊN MÁY ẢO LINUX
 
-### 1️ Mở terminal
+###  Mở terminal
 ```bash
 Ctrl + Alt + T
 ```
@@ -69,14 +69,14 @@ mkdir -p ~/iDragonCloud
 cd ~/iDragonCloud
 ```
 
-###  Tạo file Python mới
+### Tạo file Python mới
 ```bash
 nano lab5.py
-
+```
 
 ###  Chạy file Python
-
+```bash
 python3 lab5.py
-
+```
 
 
