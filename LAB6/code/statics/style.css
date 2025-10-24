@@ -1,0 +1,98 @@
+body {
+  background-color: #f9fafb;
+}
+
+div {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b82f6;
+}
+button:active {
+  background-color: #1e40af;
+}
+button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+input {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  border-radius: 4px;
+}
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}
+input::placeholder {
+  color: #9ca3af;
+}
+input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+label.required::after {
+  content: " *";
+  color: #ef4444;
+}
+label.optional::after {
+  content: " (optional)";
+  color: #6b7280;
+}
+label.disabled {
+  color: #9ca3af;
+}
+label:hover {
+  color: #2563eb;
+}
+label:active {
+  color: #1e40af;
+}
+label:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+label:disabled {
+  color: #d1d5db;
+}
+label::first-letter {
+  text-transform: uppercase;
+}
+label::placeholder {
+  color: #9ca3af;
+}
+label::before {
+  content: "Label: ";
+  font-weight: bold;
+}
+label::after {
+  content: " - end";
+  font-style: italic;
+}
+label::selection {
+  background-color: #2563eb;
+  color: white;
+}

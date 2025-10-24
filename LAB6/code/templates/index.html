@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Candidate Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding: 20px; background:#f7f9fc; }
+    .metric { padding:10px; border-radius:8px; background:white; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    .plot { margin-bottom: 20px; background:white; padding:10px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .report { margin-bottom:20px; background:white; padding:16px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .report h6 { font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <h2>Candidate Dashboard</h2>
+    <div class="row mb-3">
+      <div class="col-md-3 metric">
+        <h6>Total candidates</h6>
+        <h3>{{ metrics.total_candidates }}</h3>
+      </div>
+      <div class="col-md-3 metric">
+        <h6>Positions</h6>
+        <h3>{{ metrics.positions }}</h3>
+      </div>
+      <div class="col-md-3 metric">
+        <h6>Avg years experience</h6>
+        <h3>{{ metrics.avg_years_experience }}</h3>
+      </div>
+      <div class="col-md-3 metric">
+        <h6>Overall suitable rate</h6>
+        <h3>{{ metrics.overall_suitable_rate }}</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["pie_positions"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.pie_positions %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["bar_education"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.bar_education %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["combo_experience"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.combo_experience %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["area_cumulative"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.area_cumulative %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["scatter_individuals"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.scatter_individuals %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 plot">
+        {{ plots["stacked_position_education"]|safe }}
+      </div>
+      <div class="col-md-4 report">
+        <h6>Key Insights</h6>
+        <ul class="mb-0">
+          {% for line in insights.stacked_position_education %}
+            <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 plot">
+        <h5>Sample data table</h5>
+        {{ plots["table_html"]|safe }}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
