@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Loại Thư Rác - Spam Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Phân Loại Thư Rác</h1>
+            <p>Sử dụng thuật toán Naive Bayes để phát hiện email spam</p>
+            <div style="margin-top: 20px;">
+                <a href="/dashboard" style="background: linear-gradient(45deg, #4CAF50, #45a049); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                    📊 Xem Dashboard Analytics
+                </a>
+            </div>
+        </div>
+
+        <form id="spamForm">
+            <div class="form-group">
+                <label for="emailText">Nhập nội dung email cần kiểm tra:</label>
+                <textarea id="emailText" placeholder="Nhập nội dung email của bạn vào đây..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn" id="submitBtn">
+                🔍 Kiểm Tra Email
+            </button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Đang phân tích email...</p>
+        </div>
+
+        <div class="result" id="result">
+            <h3 id="resultTitle"></h3>
+            <p id="resultText"></p>
+            <div class="confidence" id="confidence"></div>
+        </div>
+
+        <div class="examples">
+            <h3>📝 Ví dụ để thử nghiệm:</h3>
+            <button type="button" class="example-btn" onclick="loadExample('spam')">Email Spam</button>
+            <button type="button" class="example-btn" onclick="loadExample('ham')">Email Bình Thường</button>
+            <button type="button" class="example-btn" onclick="clearText()">Xóa Nội Dung</button>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Spam Detection System - Powered by Naive Bayes Algorithm</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
