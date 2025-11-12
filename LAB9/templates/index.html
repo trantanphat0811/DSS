@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat & Dog Classifier</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f0f0;
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8e8e8;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .upload-hint {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .file-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f4f8;
+            border-radius: 10px;
+            display: none;
+            word-break: break-all;
+        }
+
+        .preview-container {
+            margin: 20px 0;
+            display: none;
+            position: relative;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 10px;
+            font-weight: 600;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-container {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+        }
+
+        .result-error {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+
+        .result-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .result-confidence {
+            font-size: 1.3em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .upload-area {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐱 Cat & Dog Classifier 🐶</h1>
+        <p class="subtitle">Upload một bức ảnh để phân loại Cat hoặc Dog</p>
+
+        <div class="upload-area" id="upload-area">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">Kéo thả ảnh vào đây hoặc click để chọn</div>
+            <div class="upload-hint">Hỗ trợ: JPG, PNG, JPEG, GIF, BMP, WEBP (Tối đa 16MB)</div>
+        </div>
+
+        <input type="file" id="file-input" accept="image/*">
+
+        <div class="error-message" id="error-message"></div>
+        <div class="success-message" id="success-message"></div>
+
+        <div class="file-info" id="file-info"></div>
+
+        <div class="preview-container" id="preview-container">
+            <img id="preview-image" class="preview-image" alt="Preview">
+        </div>
+
+        <button class="btn" id="predict-btn" onclick="predictImage()" disabled>Phân loại</button>
+        <button class="btn" id="reset-btn" onclick="resetForm()" style="display: none;">Chọn ảnh khác</button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #666;">Đang xử lý...</p>
+        </div>
+
+        <div class="result-container" id="result-container">
+            <div class="emoji" id="result-emoji"></div>
+            <div class="result-title" id="result-title"></div>
+            <div class="result-confidence" id="result-confidence"></div>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const fileInfo = document.getElementById('file-info');
+        const previewContainer = document.getElementById('preview-container');
+        const previewImage = document.getElementById('preview-image');
+        const predictBtn = document.getElementById('predict-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const loading = document.getElementById('loading');
+        const resultContainer = document.getElementById('result-container');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        
+        let selectedFile = null;
+        const MAX_FILE_SIZE = 16 * 1024 * 1024; // 16MB
+        const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+        let abortController = null;
+
+        // Utility functions
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function hideMessages() {
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+        }
+
+        // Click để chọn file
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Drag and drop handlers
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect(files[0]);
+            }
+        });
+
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        function validateFile(file) {
+            // Kiểm tra loại file
+            if (!ALLOWED_TYPES.includes(file.type)) {
+                showError('Định dạng file không được hỗ trợ. Vui lòng chọn file ảnh (JPG, PNG, JPEG, GIF, BMP, WEBP)');
+                return false;
+            }
+
+            // Kiểm tra kích thước file
+            if (file.size > MAX_FILE_SIZE) {
+                showError(`File quá lớn. Kích thước tối đa: ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(0)}MB`);
+                return false;
+            }
+
+            // Kiểm tra file rỗng
+            if (file.size === 0) {
+                showError('File rỗng. Vui lòng chọn file khác.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function handleFileSelect(file) {
+            hideMessages();
+            
+            if (!validateFile(file)) {
+                fileInput.value = '';
+                return;
+            }
+
+            selectedFile = file;
+            fileInfo.style.display = 'block';
+            fileInfo.textContent = `📄 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+
+            // Preview ảnh
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewContainer.style.display = 'block';
+                predictBtn.disabled = false;
+                resetBtn.style.display = 'inline-block';
+            };
+            
+            reader.onerror = () => {
+                showError('Không thể đọc file. Vui lòng thử lại.');
+                resetForm();
+            };
+            
+            reader.readAsDataURL(file);
+
+            // Ẩn kết quả cũ
+            resultContainer.style.display = 'none';
+        }
+
+        async function predictImage() {
+            if (!selectedFile) {
+                showError('Vui lòng chọn ảnh trước!');
+                return;
+            }
+
+            // Hủy request trước đó nếu có
+            if (abortController) {
+                abortController.abort();
+            }
+
+            // Tạo AbortController mới
+            abortController = new AbortController();
+
+            // Hiển thị loading
+            loading.style.display = 'block';
+            predictBtn.disabled = true;
+            resetBtn.disabled = true;
+            resultContainer.style.display = 'none';
+            hideMessages();
+
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData,
+                    signal: abortController.signal
+                });
+
+                // Kiểm tra response status
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ error: 'Lỗi không xác định' }));
+                    throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                loading.style.display = 'none';
+                predictBtn.disabled = false;
+                resetBtn.disabled = false;
+
+                if (data.success) {
+                    showResult(data.result, data.confidence, false);
+                } else {
+                    showError(data.error || 'Có lỗi xảy ra khi xử lý ảnh');
+                    showResult(data.error || 'Có lỗi xảy ra', 0, true);
+                }
+            } catch (error) {
+                loading.style.display = 'none';
+                predictBtn.disabled = false;
+                resetBtn.disabled = false;
+
+                if (error.name === 'AbortError') {
+                    showError('Request đã bị hủy');
+                } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    showError('Lỗi kết nối đến server. Vui lòng kiểm tra kết nối và thử lại.');
+                } else {
+                    showError('Lỗi: ' + error.message);
+                    showResult('Lỗi: ' + error.message, 0, true);
+                }
+            } finally {
+                abortController = null;
+            }
+        }
+
+        function showResult(result, confidence, isError) {
+            resultContainer.className = 'result-container ' + (isError ? 'result-error' : 'result-success');
+            
+            const emoji = document.getElementById('result-emoji');
+            const title = document.getElementById('result-title');
+            const conf = document.getElementById('result-confidence');
+
+            if (isError) {
+                emoji.textContent = '❌';
+                title.textContent = result;
+                conf.textContent = '';
+            } else {
+                emoji.textContent = result === 'Cat' ? '🐱' : '🐶';
+                title.textContent = `Đây là: ${result}`;
+                conf.textContent = `Độ tin cậy: ${confidence}%`;
+            }
+
+            resultContainer.style.display = 'block';
+            
+            // Scroll to result
+            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function resetForm() {
+            // Hủy request đang chạy nếu có
+            if (abortController) {
+                abortController.abort();
+                abortController = null;
+            }
+
+            selectedFile = null;
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+            previewContainer.style.display = 'none';
+            resultContainer.style.display = 'none';
+            loading.style.display = 'none';
+            predictBtn.disabled = true;
+            resetBtn.style.display = 'none';
+            hideMessages();
+        }
+
+        // Kiểm tra server health khi load trang
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                
+                if (!data.model_loaded) {
+                    showError('Mô hình chưa được tải. Vui lòng chạy train_model.py trước khi sử dụng.');
+                }
+            } catch (error) {
+                console.error('Không thể kiểm tra trạng thái server:', error);
+            }
+        });
+    </script>
+</body>
+</html>
