@@ -1,0 +1,25 @@
+# Core web framework
+flask==3.0.0
+
+# Deep Learning - TensorFlow/Keras (Option 1)
+tensorflow==2.15.0
+keras==2.15.0
+
+# Deep Learning - PyTorch (Option 2 - Thay thế TensorFlow)
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Image processing
+pillow==10.1.0
+
+# Numerical computing
+numpy==1.24.3
+
+# Machine Learning utilities
+scikit-learn>=1.0.0
+
+# Plotting
+matplotlib==3.8.2
+
+# Optional: for better performance
+# scipy>=1.10.0

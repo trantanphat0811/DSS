@@ -1,0 +1,93 @@
+2025-11-07 09:07:23,765 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-11-07 09:07:24,030 - train_model - INFO - ✓ Đã sử dụng Keras standalone
+2025-11-07 09:08:42,809 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-11-07 09:08:43,174 - __main__ - INFO - ✓ Đã sử dụng Keras standalone
+2025-11-07 09:08:43,174 - __main__ - INFO - ==================================================
+2025-11-07 09:08:43,174 - __main__ - INFO - Bắt đầu huấn luyện mô hình Cat/Dog Classifier
+2025-11-07 09:08:43,174 - __main__ - INFO - ==================================================
+2025-11-07 09:08:43,174 - __main__ - INFO - Đang kiểm tra thư mục dữ liệu...
+2025-11-07 09:08:43,224 - __main__ - INFO - Số ảnh Cat: 12490
+2025-11-07 09:08:43,224 - __main__ - INFO - Số ảnh Dog: 12469
+2025-11-07 09:08:43,225 - __main__ - INFO - Đang tạo mô hình...
+2025-11-07 09:08:43,446 - absl - WARNING - At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2025-11-07 09:08:43,453 - __main__ - INFO - Mô hình đã được tạo thành công
+2025-11-07 09:08:43,455 - __main__ - INFO - Đang chuẩn bị dữ liệu...
+2025-11-07 09:08:43,455 - __main__ - INFO - Đang tạo training generator...
+2025-11-07 09:08:43,916 - __main__ - INFO - Đang tạo validation generator...
+2025-11-07 09:08:44,032 - __main__ - INFO - Training samples: 19968
+2025-11-07 09:08:44,032 - __main__ - INFO - Validation samples: 4991
+2025-11-07 09:08:44,032 - __main__ - INFO - Classes: {'Cat': 0, 'Dog': 1}
+2025-11-07 09:08:44,032 - __main__ - INFO - Bắt đầu huấn luyện...
+2025-11-07 09:08:44,032 - __main__ - INFO - Epochs: 10, Batch size: 32, Image size: 150
+2025-11-09 12:12:32,820 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-11-09 12:12:33,459 - __main__ - INFO - ✓ Đã sử dụng Keras standalone
+2025-11-09 12:12:33,459 - __main__ - INFO - ==================================================
+2025-11-09 12:12:33,459 - __main__ - INFO - Bắt đầu huấn luyện mô hình Cat/Dog Classifier
+2025-11-09 12:12:33,459 - __main__ - INFO - ==================================================
+2025-11-09 12:12:33,459 - __main__ - INFO - Đang kiểm tra thư mục dữ liệu...
+2025-11-09 12:12:33,475 - __main__ - INFO - Số ảnh Cat: 12490
+2025-11-09 12:12:33,475 - __main__ - INFO - Số ảnh Dog: 12469
+2025-11-09 12:12:33,475 - __main__ - INFO - Đang tạo mô hình...
+2025-11-09 12:12:33,935 - absl - WARNING - At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2025-11-09 12:12:33,945 - __main__ - INFO - Mô hình đã được tạo thành công
+2025-11-09 12:12:33,947 - __main__ - INFO - Đang chuẩn bị dữ liệu...
+2025-11-09 12:12:33,948 - __main__ - INFO - Đang tạo training generator...
+2025-11-09 12:12:34,514 - __main__ - INFO - Đang tạo validation generator...
+2025-11-09 12:12:34,749 - __main__ - INFO - Training samples: 19968
+2025-11-09 12:12:34,749 - __main__ - INFO - Validation samples: 4991
+2025-11-09 12:12:34,749 - __main__ - INFO - Classes: {'Cat': 0, 'Dog': 1}
+2025-11-09 12:12:34,749 - __main__ - INFO - Bắt đầu huấn luyện...
+2025-11-09 12:12:34,749 - __main__ - INFO - Epochs: 10, Batch size: 32, Image size: 150
+2025-11-09 12:26:45,588 - __main__ - WARNING - 
+Huấn luyện bị gián đoạn bởi người dùng
+2025-11-09 12:26:45,595 - __main__ - ERROR - Huấn luyện thất bại!
+2025-11-09 12:28:50,570 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-11-09 12:28:51,047 - __main__ - INFO - ✓ Đã sử dụng Keras standalone
+2025-11-09 12:28:51,047 - __main__ - INFO - ==================================================
+2025-11-09 12:28:51,048 - __main__ - INFO - Bắt đầu huấn luyện mô hình Cat/Dog Classifier
+2025-11-09 12:28:51,048 - __main__ - INFO - ==================================================
+2025-11-09 12:28:51,048 - __main__ - INFO - Đang kiểm tra thư mục dữ liệu...
+2025-11-09 12:28:51,063 - __main__ - INFO - Số ảnh Cat: 12490
+2025-11-09 12:28:51,063 - __main__ - INFO - Số ảnh Dog: 12469
+2025-11-09 12:28:51,063 - __main__ - INFO - Đang tạo mô hình...
+2025-11-09 12:28:51,389 - absl - WARNING - At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2025-11-09 12:28:51,394 - __main__ - INFO - Mô hình đã được tạo thành công
+2025-11-09 12:28:51,396 - __main__ - INFO - Đang chuẩn bị dữ liệu...
+2025-11-09 12:28:51,396 - __main__ - INFO - Đang tạo training generator...
+2025-11-09 12:28:51,804 - __main__ - INFO - Đang tạo validation generator...
+2025-11-09 12:28:51,907 - __main__ - INFO - Training samples: 19968
+2025-11-09 12:28:51,907 - __main__ - INFO - Validation samples: 4991
+2025-11-09 12:28:51,907 - __main__ - INFO - Classes: {'Cat': 0, 'Dog': 1}
+2025-11-09 12:28:51,908 - __main__ - INFO - Bắt đầu huấn luyện...
+2025-11-09 12:28:51,908 - __main__ - INFO - Epochs: 10, Batch size: 32, Image size: 150
+2025-11-09 13:15:51,893 - __main__ - INFO - Đang lưu mô hình cuối cùng...
+2025-11-09 13:15:53,746 - __main__ - INFO - Đã lưu biểu đồ vào models/training_history.png
+2025-11-09 13:15:53,746 - __main__ - INFO - ==================================================
+2025-11-09 13:15:53,746 - __main__ - INFO - Huấn luyện hoàn tất!
+2025-11-09 13:15:53,746 - __main__ - INFO - Độ chính xác tốt nhất (validation): 0.8190 tại epoch 10
+2025-11-09 13:15:53,747 - __main__ - INFO - Độ chính xác cuối cùng (training): 0.7776
+2025-11-09 13:15:53,747 - __main__ - INFO - Độ chính xác cuối cùng (validation): 0.8190
+2025-11-09 13:15:53,747 - __main__ - INFO - ==================================================
+2025-11-09 13:15:53,748 - __main__ - INFO - Huấn luyện thành công!
+2025-11-12 20:14:51,645 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-11-12 20:14:52,676 - __main__ - INFO - ✓ Đã sử dụng Keras standalone
+2025-11-12 20:14:52,677 - __main__ - INFO - ==================================================
+2025-11-12 20:14:52,677 - __main__ - INFO - Bắt đầu huấn luyện mô hình Cat/Dog Classifier
+2025-11-12 20:14:52,677 - __main__ - INFO - ==================================================
+2025-11-12 20:14:52,677 - __main__ - INFO - Đang kiểm tra thư mục dữ liệu...
+2025-11-12 20:14:52,755 - __main__ - INFO - Số ảnh Cat: 12490
+2025-11-12 20:14:52,755 - __main__ - INFO - Số ảnh Dog: 12469
+2025-11-12 20:14:52,755 - __main__ - INFO - Đang tạo mô hình...
+2025-11-12 20:14:53,846 - absl - WARNING - At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2025-11-12 20:14:53,862 - __main__ - INFO - Mô hình đã được tạo thành công
+2025-11-12 20:14:53,864 - __main__ - INFO - Đang chuẩn bị dữ liệu...
+2025-11-12 20:14:53,864 - __main__ - INFO - Đang tạo training generator...
+2025-11-12 20:14:54,254 - __main__ - INFO - Đang tạo validation generator...
+2025-11-12 20:14:54,354 - __main__ - INFO - Training samples: 19968
+2025-11-12 20:14:54,354 - __main__ - INFO - Validation samples: 4991
+2025-11-12 20:14:54,354 - __main__ - INFO - Classes: {'Cat': 0, 'Dog': 1}
+2025-11-12 20:14:54,354 - __main__ - INFO - Bắt đầu huấn luyện...
+2025-11-12 20:14:54,354 - __main__ - INFO - Epochs: 10, Batch size: 32, Image size: 150
+2025-11-12 20:15:02,298 - __main__ - WARNING - 
+Huấn luyện bị gián đoạn bởi người dùng
+2025-11-12 20:15:02,301 - __main__ - ERROR - Huấn luyện thất bại!
